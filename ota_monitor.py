@@ -15,7 +15,7 @@ from urllib.parse import urljoin
 # ============ 配置 ============
 BASE_URL = "https://www.autohome.com.cn/31107/0/{page}/conjunction.html"
 HISTORY_FILE = "ota_history.json"
-WEBHOOK_URL = os.environ.get("FEISHU_WEBHOOK", "")
+WEBHOOK_URL = os.environ.get("F4", "")
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
