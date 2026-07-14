@@ -2,6 +2,12 @@ name: Update OTA monitor
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "config/**"
+      - "src/**"
+      - ".github/workflows/update-monitor.yml"
   schedule:
     # 01:15 UTC = 09:15 Beijing time
     - cron: "15 1 * * *"
