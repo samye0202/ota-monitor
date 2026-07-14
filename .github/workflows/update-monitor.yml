@@ -1,0 +1,30 @@
+name: Update OTA monitor
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 01:15 UTC = 09:15 Beijing time
+    - cron: "15 1 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Collect OTA notices and build site
+        run: python -m src.ota_monitor
+      - name: Commit updated intelligence report
+        run: |
+          git config user.name "ota-monitor[bot]"
+          git config user.email "ota-monitor[bot]@users.noreply.github.com"
+          git add data/ota_updates.json docs/index.html
+          git diff --cached --quiet || git commit -m "chore: update OTA intelligence report"
+          git push
