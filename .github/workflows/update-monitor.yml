@@ -7,6 +7,7 @@ on:
     paths:
       - "config/**"
       - "src/**"
+      - "ota_monitor.py"
       - ".github/workflows/update-monitor.yml"
   schedule:
     # 01:15 UTC = 09:15 Beijing time
@@ -21,12 +22,15 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: Collect OTA notices and build site
         run: python -m src.ota_monitor
+
       - name: Commit updated intelligence report
         run: |
           git config user.name "ota-monitor[bot]"
