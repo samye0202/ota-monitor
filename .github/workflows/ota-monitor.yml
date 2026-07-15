@@ -11,43 +11,29 @@ on:
         required: false
         default: 'true'
 
-env:
-  FEISHU_WEBHOOK: ${{ secrets.FEISHU_WEBHOOK }}
+permissions:
+  contents: write
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: 检出代码
-      uses: actions/checkout@v4
-      
-    - name: 设置 Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-        
-    - name: 安装依赖
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests beautifulsoup4
-        
-    - name: 运行OTA监控
-      run: python ota_monitor.py
-      
-    - name: 保存历史记录
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: ota-history
-        path: ota_history.json
-        retention-days: 30
-        
-    - name: 提交历史记录到仓库
-      if: always()
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add ota_history.json 2>/dev/null || true
-        git diff --staged --quiet || git commit -m "Update OTA history [$(date +%Y-%m-%d)]"
-        git push || true
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 运行 OTA 采集与页面生成
+        run: python -m src.ota_monitor
+
+      - name: 提交结果到仓库
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/ota_updates.json docs/index.html
+          git diff --staged --quiet || git commit -m "chore: update OTA report [$(date +%Y-%m-%d)]"
+          git push
