@@ -1,1 +1,14 @@
-fs2 is not defined
+{
+  "sources": [
+    {
+      "brand": "全品牌",
+      "name": "汽车之家 · 车辆OTA资讯",
+      "url": "https://www.autohome.com.cn/31107/0/1/conjunction.html#pvareaid=6867404",
+      "type": "autohome_ota",
+      "headers": {
+        "Referer": "https://www.autohome.com.cn/",
+        "Accept-Language": "zh-CN,zh;q=0.9"
+      }
+    }
+  ]
+}
