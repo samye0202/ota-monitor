@@ -31,7 +31,7 @@
 <body><main>
   <h1>OTA 竞品情报台</h1>
   <p class="subtitle">自动收集 · 自动归类 · 可追溯查看</p>
-  <div class="notice">当前为演示数据（网络抓取失败或手动 demo 模式）。 更新时间：2026-07-15T03:59:20+00:00</div>
+  <div class="notice">当前为演示数据（网络抓取失败或手动 demo 模式）。 更新时间：2026-07-15T04:04:10+00:00</div>
   <section class="stats" id="stats"></section>
   <section class="filters">
     <select id="brandFilter"></select>
@@ -42,7 +42,7 @@
   <footer class="footer-note">每条内容均保留公开来源链接和机器分类依据。重要判断请回到原始来源复核。</footer>
 </main>
 <script>
-const items = [{"id": "69eb33f232781b8c", "brand": "演示品牌 C", "title": "OTA 7.0：修复泊车辅助异常", "summary": "修复部分场景下泊车辅助提示不稳定的问题，并提升低速环境下的可用性。", "url": "https://example.com/demo/parking", "source": "未知来源", "source_url": "", "published_at": "2026-07-05T00:00:00+00:00", "collected_at": "2026-07-15T03:59:20+00:00", "domains": ["智能驾驶", "性能稳定性"], "change_type": "问题修复"}, {"id": "f6e1737dab06c9fd", "brand": "演示品牌 B", "title": "OTA 3.8：优化语音导航交互", "summary": "优化连续语音指令识别，支持在导航过程中直接修改目的地并查询沿途服务。", "url": "https://example.com/demo/voice", "source": "未知来源", "source_url": "", "published_at": "2026-07-03T00:00:00+00:00", "collected_at": "2026-07-15T03:59:20+00:00", "domains": ["导航与地图", "座舱交互", "语音与 AI", "性能稳定性"], "change_type": "新功能"}, {"id": "816d9ecde2d51639", "brand": "演示品牌 A", "title": "OTA 5.2：新增充电站空闲桩展示", "summary": "导航目的地详情中新增充电站空闲桩和价格信息，帮助用户在出发前完成补能规划。", "url": "https://example.com/demo/charging", "source": "未知来源", "source_url": "", "published_at": "2026-07-01T00:00:00+00:00", "collected_at": "2026-07-15T03:59:20+00:00", "domains": ["导航与地图", "能源补给"], "change_type": "新功能"}];
+const items = [{"id": "69eb33f232781b8c", "brand": "演示品牌 C", "title": "OTA 7.0：修复泊车辅助异常", "summary": "修复部分场景下泊车辅助提示不稳定的问题，并提升低速环境下的可用性。", "url": "https://example.com/demo/parking", "source": "未知来源", "source_url": "", "published_at": "2026-07-05T00:00:00+00:00", "collected_at": "2026-07-15T04:04:10+00:00", "domains": ["智能驾驶", "性能稳定性"], "change_type": "问题修复"}, {"id": "f6e1737dab06c9fd", "brand": "演示品牌 B", "title": "OTA 3.8：优化语音导航交互", "summary": "优化连续语音指令识别，支持在导航过程中直接修改目的地并查询沿途服务。", "url": "https://example.com/demo/voice", "source": "未知来源", "source_url": "", "published_at": "2026-07-03T00:00:00+00:00", "collected_at": "2026-07-15T04:04:10+00:00", "domains": ["导航与地图", "座舱交互", "语音与 AI", "性能稳定性"], "change_type": "新功能"}, {"id": "816d9ecde2d51639", "brand": "演示品牌 A", "title": "OTA 5.2：新增充电站空闲桩展示", "summary": "导航目的地详情中新增充电站空闲桩和价格信息，帮助用户在出发前完成补能规划。", "url": "https://example.com/demo/charging", "source": "未知来源", "source_url": "", "published_at": "2026-07-01T00:00:00+00:00", "collected_at": "2026-07-15T04:04:10+00:00", "domains": ["导航与地图", "能源补给"], "change_type": "新功能"}];
 const cards = document.querySelector('#cards');
 const stats = document.querySelector('#stats');
 const brandFilter = document.querySelector('#brandFilter');
