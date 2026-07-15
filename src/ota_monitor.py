@@ -49,8 +49,8 @@ def save_json(path: Path, value: Any) -> None:
 
 
 def strip_html(raw: str) -> str:
-    text = re.sub(r"<script[^>]*>.*?</script>", "", raw, flags=re.IGNORECASE | re.DOTALL)
-    text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"<script[^>]*>.*?</script\\s*>", "", raw, flags=re.IGNORECASE | re.DOTALL)
+    text = re.sub(r"<style[^>]*>.*?</style\\s*>", "", text, flags=re.IGNORECASE | re.DOTALL)
     text = re.sub(r"<[^>]+>", " ", text)
     text = re.sub(r"\s+", " ", text)
     return text.strip()
