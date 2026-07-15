@@ -1,1 +1,27 @@
-fs2 is not defined
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OTA 竞品情报台</title>
+  <style>
+    :root{--bg:#07111f;--panel:#101f33;--line:#233958;--text:#ecf4ff;--muted:#9fb2cc;--brand:#50e3c2;--accent:#6ea8fe;--warn:#ffd166}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#173760 0,var(--bg) 38%);color:var(--text);font-family:Inter,"Microsoft YaHei",sans-serif}main{max-width:1280px;margin:auto;padding:42px 24px 64px}h1{margin:0;font-size:clamp(28px,5vw,48px);letter-spacing:-1px}.subtitle{color:var(--muted);margin:12px 0 30px}.notice{background:#182b42;border:1px solid var(--line);border-radius:12px;padding:12px 16px;color:var(--warn);margin:0 0 18px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat,article{background:rgba(16,31,51,.94);border:1px solid var(--line);border-radius:16px;padding:18px}.stat b{display:block;font-size:28px;color:var(--brand)}.filters{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0}button{cursor:pointer;color:var(--text);border:1px solid var(--line);background:#10233a;border-radius:999px;padding:9px 14px}button.active,button:hover{background:var(--accent);border-color:var(--accent)}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}article{min-height:240px;display:flex;flex-direction:column}article h2{font-size:18px;line-height:1.45;margin:10px 0}article p{color:var(--muted);line-height:1.65;flex:1}.meta,footer{color:var(--muted);font-size:13px}.tag{display:inline-block;margin:3px 4px 0 0;color:#cbe4ff;background:#1b3d62;padding:4px 8px;border-radius:999px;font-size:12px}.type{color:#06141d;background:var(--brand)}a{color:#8fc0ff;text-decoration:none}a:hover{text-decoration:underline}footer{margin-top:34px}
+  </style>
+</head>
+<body><main>
+  <h1>OTA 竞品情报台</h1>
+  <p class="subtitle">自动收集 · 自动归类 · 可追溯查看</p>
+  <div class="notice">当前展示的是演示数据。GitHub Actions 成功运行真实采集后，网页会自动更新。</div>
+  <section class="stats" id="stats"></section><section class="filters" id="filters"></section><section class="grid" id="cards"></section>
+  <footer>每条内容均保留公开来源链接和机器分类依据。重要判断请回到原始来源复核。</footer>
+</main>
+<script>
+const items=[
+ {brand:'演示品牌 A',title:'OTA 5.2：新增充电站空闲桩展示',summary:'导航目的地详情中新增充电站空闲桩和价格信息，帮助用户在出发前完成补能规划。',url:'https://example.com/demo/charging',published_at:'2026-07-01',domains:['导航与地图','能源补给'],change_type:'新功能'},
+ {brand:'演示品牌 B',title:'OTA 3.8：优化语音导航交互',summary:'优化连续语音指令识别，支持在导航过程中直接修改目的地并查询沿途服务。',url:'https://example.com/demo/voice',published_at:'2026-07-03',domains:['导航与地图','语音与 AI'],change_type:'体验优化'},
+ {brand:'演示品牌 C',title:'OTA 7.0：修复泊车辅助异常',summary:'修复部分场景下泊车辅助提示不稳定的问题，并提升低速环境下的可用性。',url:'https://example.com/demo/parking',published_at:'2026-07-05',domains:['智能驾驶','性能稳定性'],change_type:'问题修复'}];
+const cards=document.querySelector('#cards'),filters=document.querySelector('#filters'),stats=document.querySelector('#stats'),domains=[...new Set(items.flatMap(x=>x.domains))];let selected='全部';
+const esc=v=>{const d=document.createElement('div');d.textContent=v||'';return d.innerHTML};
+function render(){const shown=selected==='全部'?items:items.filter(x=>x.domains.includes(selected));cards.innerHTML=shown.map(x=>`<article><div><span class="tag type">${esc(x.change_type)}</span>${x.domains.map(d=>`<span class="tag">${esc(d)}</span>`).join('')}</div><h2>${esc(x.title)}</h2><p>${esc(x.summary)}</p><div class="meta">${esc(x.brand)} · ${esc(x.published_at)}</div><a href="${esc(x.url)}" target="_blank" rel="noreferrer">查看原始来源 ↗</a></article>`).join('')}
+stats.innerHTML=`<div class="stat"><b>${items.length}</b>收录条目</div><div class="stat"><b>${new Set(items.map(x=>x.brand)).size}</b>覆盖竞品</div><div class="stat"><b>${domains.length}</b>功能域</div>`;['全部',...domains].forEach(d=>{const b=document.createElement('button');b.textContent=d;b.className=d===selected?'active':'';b.onclick=()=>{selected=d;[...filters.children].forEach(e=>e.classList.toggle('active',e.textContent===d));render()};filters.append(b)});render();
+</script></body></html>
