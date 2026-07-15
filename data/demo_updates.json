@@ -1,1 +1,23 @@
-fs2 is not defined
+[
+  {
+    "brand": "演示品牌 A",
+    "title": "OTA 5.2：新增充电站空闲桩展示",
+    "summary": "导航目的地详情中新增充电站空闲桩和价格信息，帮助用户在出发前完成补能规划。",
+    "url": "https://example.com/demo/charging",
+    "published_at": "2026-07-01T00:00:00+00:00"
+  },
+  {
+    "brand": "演示品牌 B",
+    "title": "OTA 3.8：优化语音导航交互",
+    "summary": "优化连续语音指令识别，支持在导航过程中直接修改目的地并查询沿途服务。",
+    "url": "https://example.com/demo/voice",
+    "published_at": "2026-07-03T00:00:00+00:00"
+  },
+  {
+    "brand": "演示品牌 C",
+    "title": "OTA 7.0：修复泊车辅助异常",
+    "summary": "修复部分场景下泊车辅助提示不稳定的问题，并提升低速环境下的可用性。",
+    "url": "https://example.com/demo/parking",
+    "published_at": "2026-07-05T00:00:00+00:00"
+  }
+]
