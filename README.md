@@ -30,7 +30,9 @@ data/ota_updates.json # 结构化历史条目
 
 ## 接入真实来源
 
-编辑 `config/sources.json`，每个来源支持：
+首期已接入汽车之家的 [车辆 OTA 资讯专题](https://www.autohome.com.cn/31107/0/1/conjunction.html#pvareaid=6867404)。页面会保留每条信息的原始文章链接，便于复核；后续可在 `config/sources.json` 增加官方公告或其他来源。
+
+每个来源支持：
 
 ```json
 {
@@ -44,6 +46,7 @@ data/ota_updates.json # 结构化历史条目
 - `rss`：RSS / Atom 订阅源，推荐优先使用，稳定性最高。
 - `json`：返回数组或 `items` / `data` 数组的公开 JSON 接口。
 - `html`：为没有订阅源的公开发布页提供基础抓取；建议后续针对具体站点补充解析器。
+- `autohome_ota`：汽车之家 OTA 专题页专用解析器，提取包含 OTA、升级、车机、智驾等关键词的文章线索。
 
 为了保证信息可信，页面会显示来源链接和抓取时间；机器只负责收集、归类和摘要，不会把无法验证的信息写成结论。
 
